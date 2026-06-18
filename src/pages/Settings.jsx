@@ -10,10 +10,19 @@ const Settings = () => {
 
   const changePassword = async (e) => {
     e.preventDefault();
-    if (oldPassword !== user.password) return showNotification('Old password incorrect', 'error');
-    await updateUser(user.id, { password: newPassword });
-    setUser({ ...user, password: newPassword });
-    showNotification('Password updated', 'success');
+    if (oldPassword !== user.password) {
+      showNotification('Old password incorrect', 'error');
+      return;
+    }
+    try {
+      await updateUser(user.id, { password: newPassword });
+      setUser({ ...user, password: newPassword });
+      showNotification('Password updated successfully', 'success');
+      setOldPassword('');
+      setNewPassword('');
+    } catch (error) {
+      showNotification('Failed to update password', 'error');
+    }
   };
 
   return (
@@ -23,12 +32,29 @@ const Settings = () => {
       <div className="glass">
         <h2 className="text-lg font-semibold mb-3">Change Password</h2>
         <form onSubmit={changePassword} className="space-y-3">
-          <input type="password" placeholder="Old password" value={oldPassword} onChange={e => setOldPassword(e.target.value)} className="w-full bg-sapphire border border-platinum/20 rounded-xl p-3" required />
-          <input type="password" placeholder="New password" value={newPassword} onChange={e => setNewPassword(e.target.value)} className="w-full bg-sapphire border border-platinum/20 rounded-xl p-3" required />
-          <button className="btn-premium w-full">Update Password</button>
+          <input
+            type="password"
+            placeholder="Old password"
+            value={oldPassword}
+            onChange={(e) => setOldPassword(e.target.value)}
+            className="w-full bg-sapphire border border-platinum/20 rounded-xl p-3 text-pearl"
+            required
+          />
+          <input
+            type="password"
+            placeholder="New password"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            className="w-full bg-sapphire border border-platinum/20 rounded-xl p-3 text-pearl"
+            required
+          />
+          <button type="submit" className="btn-premium w-full">
+            Update Password
+          </button>
         </form>
       </div>
     </div>
   );
 };
+
 export default Settings;
