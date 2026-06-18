@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-sapphire text-pearl font-body;
+  background: linear-gradient(135deg, #0A0E27 0%, #1A1040 50%, #0A0E27 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+}
+
+.glass {
+  background: rgba(10, 14, 39, 0.6);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  @apply rounded-2xl p-6 transition-all duration-300;
+}
+
+.glass:hover {
+  border-color: rgba(100, 255, 218, 0.2);
+  box-shadow: 0 12px 40px rgba(124, 58, 237, 0.2);
+}
+
+.glass-sm {
+  background: rgba(10, 14, 39, 0.4);
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(100, 255, 218, 0.08);
+  @apply rounded-xl p-4;
+}
+
+.btn-premium {
+  background: linear-gradient(135deg, #7C3AED 0%, #64FFDA 100%);
+  @apply text-sapphire font-bold py-3 rounded-full transition-all duration-300;
+}
+
+.btn-premium:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(124, 58, 237, 0.3);
+}
+
+.btn-outline-premium {
+  border: 2px solid rgba(100, 255, 218, 0.3);
+  @apply text-platinum py-3 rounded-full transition-all duration-300;
+}
+
+.btn-outline-premium:hover {
+  border-color: #64FFDA;
+  background: rgba(100, 255, 218, 0.05);
+}
