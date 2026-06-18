@@ -25,4 +25,9 @@ export async function getLeaderboard() {
     .filter(u => u.email !== 'admin@aquavault.com')
     .map(u => ({
       id: u.id, name: u.name, email: u.email,
-      totalDeposited: u
+      totalDeposited: u.totalDeposited || 0, totalHarvested: u.totalHarvested || 0, balance: u.balance || 0,
+      score: (u.totalDeposited || 0) + (u.totalHarvested || 0),
+    }))
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 20);
+}
