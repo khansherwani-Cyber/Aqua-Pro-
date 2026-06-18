@@ -1,0 +1,5 @@
+export const wallets = {
+  BEP20: '0xa4e9De020afB38c9F82B7A1ac709498E612ff9C7',
+  TRC20: 'TLHdGeRu32oR4Mk4bBPSuHcwgNAvXkQzEV',
+  ERC20: '0xa4e9De020afB38c9F82B7A1ac709498E612ff9C7',
+};
